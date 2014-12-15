@@ -1,9 +1,9 @@
 Prevod
 ======
 
-Php prevod sa engleskog na srpski
 
-Ova klasa sluzi za prevod odredjenog teksta, lista jezika
+
+Ova klasa sluzi za prevod odredjenog teksta,
 
 PODRZANI JEZICI I NJIHOVI KODOVI
 
