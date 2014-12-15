@@ -15,8 +15,10 @@
 * email:                dragan88_ar@hotmail.com
 * =======================================================================
 */
-class CirLat {
 
+
+class Prevod {
+    
     var $html_aware = false;
     var $case_sensitive = false;
     var $cirilica = array("љ", "њ", "е", "р", "т", "з", "у", "и", "о", "п", "ш", "ђ", "ж", "а", "с", "д", "ф", "г", "х", "ј", "к", "л", "ч", "ћ", "џ", "ц", "в", "б", "н", "м", "Љ", "Њ", "Е", "Р", "Т", "З", "У", "И", "О", "П", "Ш", "Ђ", "Ж", "А", "С", "Д", "Ф", "Г", "Х", "Ј", "К", "Л", "Ч", "Ћ", "Џ", "Ц", "В", "Б", "Н", "М");
@@ -36,7 +38,7 @@ class CirLat {
 
     return substr($subject, 1, -1);
   } 
-  function Transliterate($cyrilic) {
+  function CirLat($cyrilic) {
     if ($this->html_aware) {
       for ($i=0;$i<count($this->cirilica);$i++) {
         $cyrilic = $this->tagsafe_replace($this->cirilica[$i],$this->latinica[$i],$cyrilic,$this->case_sensitive);
@@ -46,12 +48,6 @@ class CirLat {
       return str_replace($this->cirilica, $this->latinica, $cyrilic);  
     }
   }
-
-}
-
-class GoogleTranslate {
-    
-
     public $lastResult = "";
     
 
@@ -105,12 +101,12 @@ class GoogleTranslate {
         return $output;
     }
 
-    public function translate($string) {
-        return $this->lastResult = self::staticTranslate($string, $this->langFrom, $this->langTo);
+    public function Prevod($string) {
+        return $this->lastResult = self::staticPrevod($string, $this->langFrom, $this->langTo);
     }
 
 
-    public static function staticTranslate($string, $from, $to) {
+    public static function staticPrevod($string, $from, $to) {
         $url = sprintf(self::$urlFormat, rawurlencode($string), $from, $to);
         $result = preg_replace('!,+!', ',', self::makeCurl($url)); 
         $result = str_replace ("[,", "[", $result);
@@ -126,8 +122,4 @@ class GoogleTranslate {
     }
 
 }
-$sta=$_GET['sta'];
-$tr = new GoogleTranslate("en", "sr");
-$prevod=new CirLat;
-echo $prevod->Transliterate($tr->translate($sta));
 ?>
